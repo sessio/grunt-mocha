@@ -1,56 +1,54 @@
 {
-  "name": "grunt-mocha",
-  "description": "Grunt task for running client-side Mocha specs in PhantomJS",
-  "version": "0.4.11",
-  "homepage": "https://github.com/kmiyashiro/grunt-mocha",
+  "name": "grunt-blanket-mocha",
+  "description": "Headless Blanket.js code coverage and Mocha testing via PhantomJS",
+  "version": "0.4.1",
+  "homepage": "https://github.com/ModelN/grunt-blanket-mocha",
   "author": {
-    "name": "Kelly Miyashiro",
-    "email": "miyashiro.kelly@gmail.com",
-    "url": "http://non-diligent.com"
+    "name": "Dave Cadwallader",
+    "email": "dcadwallader@gmail.com",
+    "url": "http://geekdave.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/kmiyashiro/grunt-mocha.git"
+    "url": "git://github.com/ModelN/grunt-blanket-mocha.git"
   },
   "bugs": {
-    "url": "https://github.com/kmiyashiro/grunt-mocha/issues"
+    "url": "https://github.com/ModelN/grunt-blanket-mocha/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/kmiyashiro/grunt-mocha/blob/master/LICENSE-MIT"
+      "url": "https://github.com/ModelN/grunt-blanket-mocha/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
   "engines": {
-    "node": "*"
+    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "./node_modules/.bin/grunt test"
   },
   "dependencies": {
-    "grunt-lib-phantomjs": "~0.4",
-    "mocha": "~1.18",
+    "blanket": "~1.1.6",
+    "grunt-lib-phantomjs": "~0.4.0",
+    "mocha": "~1.14.0",
     "lodash": "~2.3.0"
   },
   "peerDependencies": {
     "grunt": "~0.4"
   },
   "devDependencies": {
-    "grunt": "~0.4",
-    "grunt-contrib-connect": "~0.2",
-    "grunt-contrib-jshint": "~0.3"
+    "grunt": "~0.4.1",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-jshint": "~0.7.1"
   },
   "keywords": [
     "gruntplugin",
+    "blanket",
+    "blanketjs",
+    "coverage",
     "mocha",
     "test",
     "phantomjs"
-  ],
-  "files": [
-    "growl",
-    "phantomjs",
-    "support",
-    "tasks"
   ]
 }

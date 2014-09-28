@@ -18,6 +18,7 @@
 
     // Create a listener who'll bubble events from Phantomjs to Grunt
     function createGruntListener(ev, runner) {
+
       runner.on(ev, function(test, err) {
         var data = {
           err: err
@@ -32,13 +33,43 @@
         }
 
         sendMessage('mocha.' + ev, data);
+
       });
+    }
+
+    // 1.4.2 moved reporters to Mocha instead of mocha
+    var mochaInstance = window.Mocha || window.mocha;
+    
+    function createBlanketReporter(runner) {
+        runner.on('start', function() {
+            window.blanket.setupCoverage();
+        });
+
+        runner.on('end', function() {
+            window.blanket.onTestsDone();
+        });
+
+        runner.on('suite', function() {
+            window.blanket.onModuleStart();
+        });
+
+        runner.on('test', function() {
+            window.blanket.onTestStart();
+        });
+
+        runner.on('test end', function(test) {
+            window.blanket.onTestDone(test.parent.tests.length, test.state === 'passed');
+        });
+
+        //I dont know why these became global leaks
+        runner.globals(['stats', 'failures', 'runner']);
     }
 
     // 1.4.2 moved reporters to Mocha instead of mocha
     var mochaInstance = window.Mocha || window.mocha;
 
     var GruntReporter = function(runner){
+
       if (!mochaInstance) {
         throw new Error('Mocha was not found, make sure you include Mocha in your HTML spec file.');
       }
@@ -62,6 +93,8 @@
       for (var i = 0; i < events.length; i++) {
         createGruntListener(events[i], runner);
       }
+
+      createBlanketReporter(runner);
 
     };
 
