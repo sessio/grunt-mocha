@@ -12,7 +12,7 @@
     "node": ">= 0.8.0"
   },
   "devDependencies": {
-    "grunt-blanket-mocha": "~0.4.1",
+    "grunt-blanket-mocha": "git://github.com/sessio/grunt-mocha.git#blanket",
     "grunt": "0.4.1",
     "mocha": "1.17.1",
     "chai": "1.8.1",

@@ -17,6 +17,11 @@ module.exports = function(grunt) {
                     modulePattern : "./src/(.*?)/",
                     customThreshold: {
                         './src/spelling/plurals.js': 50
+                    },
+                    page: {
+                      settings: {
+                        userAgent: "grunt-blanket-mocha"
+                      }
                     }
                 }
             }
